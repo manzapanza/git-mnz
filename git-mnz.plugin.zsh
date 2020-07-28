@@ -1,7 +1,8 @@
 #!zsh
-local version='1.0.0'
+local version='1.1.0'
 
 alias gmnzv='echo "git-mnz v.${version}"'
+
 alias gcfix='git commit -v --fixup'
 
 alias grbma='git rebase master --autostash'
@@ -9,6 +10,20 @@ alias grbca='git rebase canary --autostash'
 alias grbda='git rebase develop --autostash'
 alias grbia='git rebase -i --autosquash'
 alias grbiaa='git rebase -i --autosquash --autostash'
+
+function _gcfixa() {
+  gcfix "$1"
+  grbia "$1~1"
+}
+
+alias gcfixa='_gcfixa'
+
+function _gcfixaa() {
+  gcfix "$1"
+  grbiaa "$1~1"
+}
+
+alias gcfixaa='_gcfixaa'
 
 alias gpt='git push && git push --tags'
 

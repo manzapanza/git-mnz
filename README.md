@@ -57,19 +57,21 @@ source ~/.zshrc
 
 ## Functions
 
-| Function             | Description                                            |
-|:---------------------|:-------------------------------------------------------|
-| gtdD                 | Delete local and remote tag                            |
-| glolc                | Shows formatted log next or specific tag               |
-| glolcfeat            | Shows formatted log next or specific tag only feat     |
-| glolcrefactor        | Shows formatted log next or specific tag only refactor |
-| glolcchore           | Shows formatted log next or specific tag only chore    |
-| glolcfix             | Shows formatted log next or specific tag only fix      |
-| glolcstyle           | Shows formatted log next or specific tag only style    |
-| glolcperf            | Shows formatted log next or specific tag only perf     |
-| glolcdocs            | Shows formatted log next or specific tag only docs     |
-| glolctest            | Shows formatted log next or specific tag only test     |
-| gch                  | Shows changelog next or specific tag                   |
+| Function             | Description
+|:---------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| gcfixa               | Commit with fixup and Interactive rebase with autosquash                                                                                                  |
+| gcfixaa              | Commit with fixup and Interactive rebase with autosquash and autostash                                                                                    |
+| gtdD                 | Delete local and remote tag                                                                                                                               |
+| glolc                | Shows formatted log next or specific tag                                                                                                                  |
+| glolcfeat            | Shows formatted log next or specific tag only feat                                                                                                        |
+| glolcrefactor        | Shows formatted log next or specific tag only refactor                                                                                                    |
+| glolcchore           | Shows formatted log next or specific tag only chore                                                                                                       |
+| glolcfix             | Shows formatted log next or specific tag only fix                                                                                                         |
+| glolcstyle           | Shows formatted log next or specific tag only style                                                                                                       |
+| glolcperf            | Shows formatted log next or specific tag only perf                                                                                                        |
+| glolcdocs            | Shows formatted log next or specific tag only docs                                                                                                        |
+| glolctest            | Shows formatted log next or specific tag only test                                                                                                        |
+| gch                  | Shows changelog next or specific tag                                                                                                                      |
 
 ## How to use
 
@@ -78,12 +80,19 @@ source ~/.zshrc
 ```
 gfix da178fb          // Add Fixup
 grbia da178fb~1       // Autosquash fixup
-```
 
-or if there are some changes:
+# or
+
+grbiaa da178fb~1      // Autosquash fixup with autostash
+```
+or
 
 ```
-grbiaa da178fb~1       // Autosquash fixup with autostash
+gfixa da178fb         // Add Fixup & Autosquash fixup
+
+# or
+
+gfixaa da178fb        // Add Fixup & Autosquash fixup with autostash
 ```
 
 ### Gpf?
