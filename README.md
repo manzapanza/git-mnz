@@ -8,11 +8,19 @@ A custom plugin for ohmyzsh to extend the git plugin
 
 ## Install git-mnz plugin
 
+To use it, add `git-mnz` to the plugins array in your ~/.zshrc file:
+
+```zsh
+plugins=(... git-mnz)
+```
+
+and install
+
 ```
 cd ~/somewhere/
 git clone git@github.com:manzapanza/git-mnz.git
 cd git-mnz/
-./install.sh
+./install.zsh
 Install Custom Plugin git-mnz ...
 ```
 
@@ -20,21 +28,9 @@ Install Custom Plugin git-mnz ...
 
 ```
 cd ~/somewhere/git-mnz/
-./update.sh
+./update.zsh
 Update Custom Plugin git-mnz ...
 Install Custom Plugin git-mnz ...
-```
-
-To use it, add `git-mnz` to the plugins array in your ~/.zshrc file:
-
-```zsh
-plugins=(... git-mnz)
-```
-
-and reload or close and reopen the terminal:
-
-```
-source ~/.zshrc
 ```
 
 ## Aliases
