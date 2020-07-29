@@ -6,31 +6,16 @@ A custom plugin for ohmyzsh to extend the git plugin
 - Install zsh and ohmyzsh https://github.com/ohmyzsh/ohmyzsh
 - Add git plugin https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git/
 
-## Install git-mnz plugin
+## Install git-mnz custom plugin
 
-To use it, add `git-mnz` to the plugins array in your ~/.zshrc file:
+```
+git clone https://github.com/manzapanza/git-mnz.git $ZSH_CUSTOM/plugins/git-mnz
+```
+
+and to o use it, add `git-mnz` to the plugins array in your ~/.zshrc file:
 
 ```zsh
 plugins=(... git-mnz)
-```
-
-and install
-
-```
-cd ~/somewhere/
-git clone git@github.com:manzapanza/git-mnz.git
-cd git-mnz/
-./install.zsh
-Install Custom Plugin git-mnz ...
-```
-
-## Update plugin
-
-```
-cd ~/somewhere/git-mnz/
-./update.zsh
-Update Custom Plugin git-mnz ...
-Install Custom Plugin git-mnz ...
 ```
 
 ## Aliases
@@ -38,7 +23,8 @@ Install Custom Plugin git-mnz ...
 | Alias                | Command                                                                     | Description                                                                 |
 |:---------------------|:----------------------------------------------------------------------------|-----------------------------------------------------------------------------|
 | gmnzv                |                                                                             | Get git-mnz version                                                         |
-| gcfix                 | git commit -v --fixup                                                       | Commit with fixup                                                           |
+| gmnzu                |                                                                             | Update git-mnz                                                              |
+| gcfix                | git commit -v --fixup                                                       | Commit with fixup                                                           |
 | grbia                | git rebase -i --autosquash                                                  | Interactive rebase with autosquash (fixup)                                  |
 | grbiaa               | git rebase -i --autosquash --autostash                                      | Interactive rebase with autosquash and autostash (fixup)                    |
 | grbma                | git rebase master --autostash                                               | Rebase master with autostash                                                |
