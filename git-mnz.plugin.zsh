@@ -1,5 +1,5 @@
 #!zsh
-local version='1.1.1'
+local version='1.1.2'
 
 alias gmnzv='echo "git-mnz v.${version}"'
 

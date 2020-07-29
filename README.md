@@ -38,7 +38,7 @@ Install Custom Plugin git-mnz ...
 | Alias                | Command                                                                     | Description                                                                 |
 |:---------------------|:----------------------------------------------------------------------------|-----------------------------------------------------------------------------|
 | gmnzv                |                                                                             | Get git-mnz version                                                         |
-| gfix                 | git commit -v --fixup                                                       | Commit with fixup                                                           |
+| gcfix                 | git commit -v --fixup                                                       | Commit with fixup                                                           |
 | grbia                | git rebase -i --autosquash                                                  | Interactive rebase with autosquash (fixup)                                  |
 | grbiaa               | git rebase -i --autosquash --autostash                                      | Interactive rebase with autosquash and autostash (fixup)                    |
 | grbma                | git rebase master --autostash                                               | Rebase master with autostash                                                |
@@ -74,21 +74,21 @@ Install Custom Plugin git-mnz ...
 ### Fixup & Rebase Autosquash
 
 ```
-gfix da178fb          // Add Fixup
-grbia da178fb~1       // Autosquash fixup
+gcfix da178fb          // Add Fixup
+grbia da178fb~1        // Autosquash fixup
 
 # or
 
-grbiaa da178fb~1      // Autosquash fixup with autostash
+grbiaa da178fb~1       // Autosquash fixup with autostash
 ```
 or
 
 ```
-gfixa da178fb         // Add Fixup & Autosquash fixup
+gcfixa da178fb         // Add Fixup & Autosquash fixup
 
 # or
 
-gfixaa da178fb        // Add Fixup & Autosquash fixup with autostash
+gcfixaa da178fb        // Add Fixup & Autosquash fixup with autostash
 ```
 
 ### Gpf?
