@@ -1,7 +1,17 @@
 #!zsh
-local version='1.1.2'
+local version='1.2.0'
+local GIT_MNZ=$ZSH_CUSTOM/plugins/git-mnz
 
 alias gmnzv='echo "git-mnz v.${version}"'
+
+function _gmnzu() {
+  git -C $GIT_MNZ fetch --all
+  git -C $GIT_MNZ reset origin/master --hard
+  source ~/.zshrc
+  gmnzv
+}
+
+alias gmnzu='_gmnzu'
 
 alias gcfix='git commit -v --fixup'
 
