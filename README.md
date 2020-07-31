@@ -1,5 +1,5 @@
 # git-mnz
-A custom plugin for ohmyzsh to extend the git plugin
+A custom plugin for Oh My Zsh to extend the git plugin.
 
 ## Prerequisites
 
@@ -17,6 +17,10 @@ and to o use it, add `git-mnz` to the plugins array in your ~/.zshrc file:
 ```zsh
 plugins=(... git-mnz)
 ```
+
+## Auto update
+
+If you'd like to upgrade the plugin automatically during Oh My Zsh updates you just need to install [autoupdate-zsh-plugin](https://github.com/TamCore/autoupdate-oh-my-zsh-plugins).
 
 ## Aliases
 
