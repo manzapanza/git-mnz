@@ -48,15 +48,15 @@ If you'd like to upgrade the plugin automatically during Oh My Zsh updates you j
 | gcfixa               | Commit with fixup and Interactive rebase with autosquash                                                                                                  |
 | gcfixaa              | Commit with fixup and Interactive rebase with autosquash and autostash                                                                                    |
 | gtdD                 | Delete local and remote tag                                                                                                                               |
-| glolc                | Shows formatted log next or specific tag                                                                                                                  |
-| glolcfeat            | Shows formatted log next or specific tag only feat                                                                                                        |
-| glolcrefactor        | Shows formatted log next or specific tag only refactor                                                                                                    |
-| glolcchore           | Shows formatted log next or specific tag only chore                                                                                                       |
-| glolcfix             | Shows formatted log next or specific tag only fix                                                                                                         |
-| glolcstyle           | Shows formatted log next or specific tag only style                                                                                                       |
-| glolcperf            | Shows formatted log next or specific tag only perf                                                                                                        |
-| glolcdocs            | Shows formatted log next or specific tag only docs                                                                                                        |
-| glolctest            | Shows formatted log next or specific tag only test                                                                                                        |
+| gchl                 | Shows formatted log next or specific tag                                                                                                                  |
+| gchfeat              | Shows formatted log next or specific tag only feat                                                                                                        |
+| gchrefactor          | Shows formatted log next or specific tag only refactor                                                                                                    |
+| gchchore             | Shows formatted log next or specific tag only chore                                                                                                       |
+| gchfix               | Shows formatted log next or specific tag only fix                                                                                                         |
+| gchstyle             | Shows formatted log next or specific tag only style                                                                                                       |
+| gchperf              | Shows formatted log next or specific tag only perf                                                                                                        |
+| gchdocs              | Shows formatted log next or specific tag only docs                                                                                                        |
+| gchtest              | Shows formatted log next or specific tag only test                                                                                                        |
 | gch                  | Shows changelog next or specific tag                                                                                                                      |
 
 ## How to use
@@ -112,12 +112,12 @@ Delete local and remote tag
 gtdD 2.1.0
 ```
 
-### Glolc & Co (Changelog)
+### Gch & Co (Changelog)
 
 Show the log (using [glods](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git/)) of the next or specific tag.
-The commands `glolcfeat`, `glolcrefactor`, `glolcchore`, `glolcfix`, `glolcstyle`, `glolcperf`, `glolcdocs`, `glolctest` follow the [commit type angular convention](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#type)
+The commands `gchfeat`, ` gchrefactor `, `gchchore`,  `gchfix`, `g lchstyle`,  `gchperf`, ` gchdocs`, ` gchtest` fo llow the [commit type angular convention](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#type)
 
-Let's compare `glods` and `glolc`.
+Let's compare `glods` and `gchl`.
 
 Show me the full log:
 
@@ -143,51 +143,51 @@ glods
 Show me the log of next version/tag:
 
 ```
-glolc
+gchl
 
-* 1eabcba6 - (HEAD -> canary) chore(app): update submodules (2020-07-21) <Author1>
-* c63f6de0 - refactor(chat): Route names as constants, Chat connect resolve (2020-07-20) <Author2>
-* 34b72de0 - feat(app): Add chat button on card and list-item (2020-07-20) <Author1>
-* 05f27a92 - chore(app): update submodules (2020-07-20) <Author1>
-* 68a5df9b - feat(panels): Show chats on panels (2020-07-13) <Author1>
-* c5e41612 - fix(context-menu): change key for chat (2020-07-13) <Author1>
-* 3cce3918 - fix(app): chat elements on main view (2020-07-13) <Author1>
+* chore(app): update submodules (1eabcba6)
+* refactor(chat): Route names as constants, Chat connect resolve (c63f6de0)
+* feat(app): Add chat button on card and list-item (34b72de0)
+* chore(app): update submodules (05f27a92)
+* feat(panels): Show chats on panels (68a5df9b)
+* fix(context-menu): change key for chat (c5e41612)
+* fix(app): chat elements on main view (3cce3918)
 ```
 
 Show me the log of version 2.32.1:
 
 ```
-glolc 2.32.1
-
+gchl 2.32.1
+ 
 * 0a09a7c8 - (tag: 2.32.1, master) fix(context-menu): Fix disabled instance open associate responder (2020-07-24) <Author2>
 ```
 
 Show me the log of version 2.32.0:
 
 ```
-glolc 2.32.0
-
-* ecf47b1a - (tag: 2.32.0) fix(list-item): Fix color pending registration (2020-07-23) <Author2>
-* 46506440 - chore(production): Fix client secred production (2020-07-23) <Author2>
-* d808ae76 - fix(list-pw): Refresh list after invite (2020-07-23) <Author2>
-* 9454b397 - fix(context-menu): Hide option when not enabled (2020-07-23) <Author2>
-* 76f7903b - fix(main): Show main menu specific routes (2020-07-22) <Author2>
+gchl 2.32.0
+ 
+* fix(list-item): Fix color pending registration (ecf47b1a)
+* chore(production): Fix client secred production (46506440)
+* fix(list-pw): Refresh list after invite (d808ae76)
+* fix(context-menu): Hide option when not enabled (9454b397)
+* fix(main): Show main menu specific routes (76f7903b)
 .....
 ```
 
 Show me the features of the next version:
 
 ```
-glolcfeat
+gchfeat
 
-* 34b72de0 - feat(app): Add chat button on card and list-item (2020-07-20) <Author1>
-* 68a5df9b - feat(panels): Show chats on panels (2020-07-13) <Author1>
+* feat(app): Add chat button on card and list-item (34b72de0)
+* feat(panels): Show chats on panels (68a5df9b)
 ```
 
 Show me the features of the version 2.32.1:
 
 ```
-glolcfeat 2.32.1
+gchfeat 2.3 2.1
 
 ** NO OUTPUT **
 ```
@@ -196,12 +196,12 @@ No feature has been implemented in this version.
 Show me the fixes of the version 2.32.1:
 
 ```
-glolcfix 2.32.1
+gchfix 2.32 .1
 
-* 0a09a7c8 - (tag: 2.32.1, master) fix(context-menu): Fix disabled instance open associate responder (2020-07-24) <Author2>
+* fix(context-menu): Fix disabled instance open associate responder (0a09a7c8)
 ```
 
-The others commands `glolcchore`, `glolcfix`, `glolcstyle`, `glolcperf`, `glolcdocs`, `glolctest` has the same behavior.
+The others commands `gchchore`,  `gchfix`, `g lchstyle`,  `gchperf`, ` gchdocs`, ` gchtest` ha s the same behavior.
 
 Show me the full changelog of the next version:
 
@@ -210,22 +210,22 @@ gch
 
 FEATURES:
 
-* 34b72de0 - feat(app): Add chat button on card and list-item (2020-07-20) <Author1>
-* 68a5df9b - feat(panels): Show chats on panels (2020-07-13) <Author1>
+* feat(app): Add chat button on card and list-item (34b72de0)
+* feat(panels): Show chats on panels (68a5df9b)
 
 REFACTOR:
 
-* c63f6de0 - refactor(chat): Route names as constants, Chat connect resolve (2020-07-20) <Author2>
+* refactor(chat): Route names as constants, Chat connect resolve (c63f6de0)
 
 CHORE:
 
-* 1eabcba6 - (HEAD -> canary) chore(app): update submodules (2020-07-21) <Author1>
-* 05f27a92 - chore(app): update submodules (2020-07-20) <Author1>
+* chore(app): update submodules (1eabcba6)
+* chore(app): update submodules (05f27a92)
 
 FIXES:
 
-* c5e41612 - fix(context-menu): change key for chat (2020-07-13) <Author1>
-* 3cce3918 - fix(app): chat elements on main view (2020-07-13) <Author1>
+* fix(context-menu): change key for chat (c5e41612)
+* fix(app): chat elements on main view (3cce3918)
 ```
 
 Show me the full changelog of the version 2.32.1:
@@ -235,5 +235,5 @@ gch 2.32.1
 
 FIXES:
 
-* 0a09a7c8 - (tag: 2.32.1, master) fix(context-menu): Fix disabled instance open associate responder (2020-07-24) <Author2>
+* fix(context-menu): Fix disabled instance open associate responder (0a09a7c8)
 ```

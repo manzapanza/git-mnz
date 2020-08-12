@@ -1,5 +1,5 @@
 #!zsh
-local version='1.2.0'
+local version='1.3.0'
 local GIT_MNZ=$ZSH_CUSTOM/plugins/git-mnz
 
 alias gmnzv='echo "git-mnz v.${version}"'
@@ -53,7 +53,7 @@ function _gtdD() {
 
 alias gtdD='_gtdD'
 
-function _glolc() {
+function _gchl() {
   local tag1="$1"
   local tag2="$1~1"
 
@@ -66,98 +66,98 @@ function _glolc() {
     tag2="HEAD"
   fi
 
-  glods $(git describe --tags --abbrev=0 "$tag2").."$tag1" $2
+  git log --graph --pretty='%s (%Cred%h%Creset)' $(git describe --tags --abbrev=0 "$tag2").."$tag1" $2
 }
 
-function _glolcfeat() {
+function _gchfeat() {
   local tag1="$1"
 
   if [ -z "${tag1}" ]; then
     tag1="HEAD"
   fi
 
-  _glolc "$tag1" --grep="^feat"
+  _gchl "$tag1" --grep="^feat"
 }
 
-function _glolcrefactor() {
+function _gchrefactor() {
   local tag1="$1"
 
   if [ -z "${tag1}" ]; then
     tag1="HEAD"
   fi
 
-  _glolc "$tag1" --grep="^refactor"
+  _gchl "$tag1" --grep="^refactor"
 }
 
-function _glolcchore(){
+function _gchchore(){
   local tag1="$1"
 
   if [ -z "${tag1}" ]; then
     tag1="HEAD"
   fi
 
-  _glolc "$tag1" --grep="^chore"
+  _gchl "$tag1" --grep="^chore"
 }
 
-function _glolcfix(){
+function _gchfix(){
   local tag1="$1"
 
   if [ -z "${tag1}" ]; then
     tag1="HEAD"
   fi
 
-  _glolc "$tag1" --grep="^fix"
+  _gchl "$tag1" --grep="^fix"
 }
 
-function _glolcstyle(){
+function _gchstyle(){
   local tag1="$1"
 
   if [ -z "${tag1}" ]; then
     tag1="HEAD"
   fi
 
-  _glolc "$tag1" --grep="^style"
+  _gchl "$tag1" --grep="^style"
 }
 
-function _glolcperf(){
+function _gchperf(){
   local tag1="$1"
 
   if [ -z "${tag1}" ]; then
     tag1="HEAD"
   fi
 
-  _glolc "$tag1" --grep="^perf"
+  _gchl "$tag1" --grep="^perf"
 }
 
-function _glolcdocs(){
+function _gchdocs(){
   local tag1="$1"
 
   if [ -z "${tag1}" ]; then
     tag1="HEAD"
   fi
 
-  _glolc "$tag1" --grep="^docs"
+  _gchl "$tag1" --grep="^docs"
 }
 
-function _glolctest(){
+function _gchtest(){
   local tag1="$1"
 
   if [ -z "${tag1}" ]; then
     tag1="HEAD"
   fi
 
-  _glolc "$tag1"  --grep="^test"
+  _gchl "$tag1"  --grep="^test"
 }
 
 function _gch() {
-  local feat=`glolcfeat $1`
-  local refactor=`glolcrefactor $1`
-  local chore=`glolcchore $1`
-  local fix=`glolcfix $1`
-  local style=`glolcstyle $1`
-  local perf=`glolcperf $1`
-  local docs=`glolcdocs $1`
-  local test=`glolctest $1`
+  local feat=`gchfeat $1`
+  local refactor=`gchrefactor $1`
+  local chore=`gchchore $1`
+  local fix=`gchfix $1`
+  local style=`gchstyle $1`
+  local perf=`gchperf $1`
+  local docs=`gchdocs $1`
+  local test=`gchtest $1`
 
   if [ -n "${feat}" ]; then
     printf "\nFEATURES:\n\n"
@@ -200,13 +200,13 @@ function _gch() {
   fi;
 }
 
-alias glolc='_glolc'
-alias glolcfeat='_glolcfeat'
-alias glolcrefactor='_glolcrefactor'
-alias glolcchore='_glolcchore'
-alias glolcfix='_glolcfix'
-alias glolcstyle='_glolcstyle'
-alias glolcperf='_glolcperf'
-alias glolcdocs='_glolcdocs'
-alias glolctest='_glolctest'
+alias gchl='_gchl'
+alias gchfeat='_gchfeat'
+alias gchrefactor='_gchrefactor'
+alias gchchore='_gchchore'
+alias gchfix='_gchfix'
+alias gchstyle='_gchstyle'
+alias gchperf='_gchperf'
+alias gchdocs='_gchdocs'
+alias gchtest='_gchtest'
 alias gch='_gch'
