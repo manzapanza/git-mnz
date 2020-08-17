@@ -1,5 +1,5 @@
 #!zsh
-local version='1.3.0'
+local version='1.4.0'
 local GIT_MNZ=$ZSH_CUSTOM/plugins/git-mnz
 
 alias gmnzv='echo "git-mnz v.${version}"'
@@ -69,6 +69,8 @@ function _gchl() {
   git log --graph --pretty='%s (%Cred%h%Creset)' $(git describe --tags --abbrev=0 "$tag2").."$tag1" $2
 }
 
+regexReplace='s/^\* (feat|refactor|chore|fix|style|perf|docs|test):? ?(\((.+)\)(:))?(.+)/* \3\4\5/'
+
 function _gchfeat() {
   local tag1="$1"
 
@@ -76,7 +78,7 @@ function _gchfeat() {
     tag1="HEAD"
   fi
 
-  _gchl "$tag1" --grep="^feat"
+  _gchl "$tag1" --grep="^feat" | sed -E "$regexReplace"
 }
 
 function _gchrefactor() {
@@ -86,7 +88,7 @@ function _gchrefactor() {
     tag1="HEAD"
   fi
 
-  _gchl "$tag1" --grep="^refactor"
+  _gchl "$tag1" --grep="^refactor" | sed -E "$regexReplace"
 }
 
 function _gchchore(){
@@ -96,7 +98,7 @@ function _gchchore(){
     tag1="HEAD"
   fi
 
-  _gchl "$tag1" --grep="^chore"
+  _gchl "$tag1" --grep="^chore" | sed -E "$regexReplace"
 }
 
 function _gchfix(){
@@ -106,7 +108,7 @@ function _gchfix(){
     tag1="HEAD"
   fi
 
-  _gchl "$tag1" --grep="^fix"
+  _gchl "$tag1" --grep="^fix" | sed -E "$regexReplace"
 }
 
 function _gchstyle(){
@@ -116,7 +118,7 @@ function _gchstyle(){
     tag1="HEAD"
   fi
 
-  _gchl "$tag1" --grep="^style"
+  _gchl "$tag1" --grep="^style" | sed -E "$regexReplace"
 }
 
 function _gchperf(){
@@ -126,7 +128,7 @@ function _gchperf(){
     tag1="HEAD"
   fi
 
-  _gchl "$tag1" --grep="^perf"
+  _gchl "$tag1" --grep="^perf" | sed -E "$regexReplace"
 }
 
 function _gchdocs(){
@@ -136,7 +138,7 @@ function _gchdocs(){
     tag1="HEAD"
   fi
 
-  _gchl "$tag1" --grep="^docs"
+  _gchl "$tag1" --grep="^docs" | sed -E "$regexReplace"
 }
 
 function _gchtest(){
@@ -146,7 +148,7 @@ function _gchtest(){
     tag1="HEAD"
   fi
 
-  _gchl "$tag1"  --grep="^test"
+  _gchl "$tag1"  --grep="^test" | sed -E "$regexReplace"
 }
 
 function _gch() {

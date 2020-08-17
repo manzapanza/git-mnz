@@ -114,8 +114,8 @@ gtdD 2.1.0
 
 ### Gch & Co (Changelog)
 
-Show the log (using [glods](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git/)) of the next or specific tag.
-The commands `gchfeat`, ` gchrefactor `, `gchchore`,  `gchfix`, `g lchstyle`,  `gchperf`, ` gchdocs`, ` gchtest` fo llow the [commit type angular convention](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#type)
+Show the log of the next or specific tag.
+The commands `gchfeat`, ` gchrefactor `, `gchchore`,  `gchfix`, `gchstyle`,  `gchperf`, ` gchdocs`, ` gchtest` follow the [commit type angular convention](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#type)
 
 Let's compare `glods` and `gchl`.
 
@@ -180,8 +180,8 @@ Show me the features of the next version:
 ```
 gchfeat
 
-* feat(app): Add chat button on card and list-item (34b72de0)
-* feat(panels): Show chats on panels (68a5df9b)
+* app: Add chat button on card and list-item (34b72de0)
+* panels: Show chats on panels (68a5df9b)
 ```
 
 Show me the features of the version 2.32.1:
@@ -198,7 +198,7 @@ Show me the fixes of the version 2.32.1:
 ```
 gchfix 2.32 .1
 
-* fix(context-menu): Fix disabled instance open associate responder (0a09a7c8)
+* context-menu: Fix disabled instance open associate responder (0a09a7c8)
 ```
 
 The others commands `gchchore`,  `gchfix`, `g lchstyle`,  `gchperf`, ` gchdocs`, ` gchtest` ha s the same behavior.
@@ -210,22 +210,22 @@ gch
 
 FEATURES:
 
-* feat(app): Add chat button on card and list-item (34b72de0)
-* feat(panels): Show chats on panels (68a5df9b)
+* app: Add chat button on card and list-item (34b72de0)
+* panels: Show chats on panels (68a5df9b)
 
 REFACTOR:
 
-* refactor(chat): Route names as constants, Chat connect resolve (c63f6de0)
+* chat: Route names as constants, Chat connect resolve (c63f6de0)
 
 CHORE:
 
-* chore(app): update submodules (1eabcba6)
-* chore(app): update submodules (05f27a92)
+* app: update submodules (1eabcba6)
+* app: update submodules (05f27a92)
 
 FIXES:
 
-* fix(context-menu): change key for chat (c5e41612)
-* fix(app): chat elements on main view (3cce3918)
+* context-menu: change key for chat (c5e41612)
+* app: chat elements on main view (3cce3918)
 ```
 
 Show me the full changelog of the version 2.32.1:
@@ -235,5 +235,5 @@ gch 2.32.1
 
 FIXES:
 
-* fix(context-menu): Fix disabled instance open associate responder (0a09a7c8)
+* context-menu: Fix disabled instance open associate responder (0a09a7c8)
 ```
