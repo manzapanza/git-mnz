@@ -1,5 +1,5 @@
 #!zsh
-local version='1.4.0'
+local version='1.5.0'
 local GIT_MNZ=$ZSH_CUSTOM/plugins/git-mnz
 
 alias gmnzv='echo "git-mnz v.${version}"'
@@ -212,3 +212,6 @@ alias gchperf='_gchperf'
 alias gchdocs='_gchdocs'
 alias gchtest='_gchtest'
 alias gch='_gch'
+
+alias gsfm='git reset --soft $(git merge-base --fork-point master) && gc'
+alias gsfd='git reset --soft $(git merge-base --fork-point develop) && gc'
