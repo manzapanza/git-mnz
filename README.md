@@ -189,7 +189,7 @@ gchfeat
 Show me the features of the version 2.32.1:
 
 ```
-gchfeat 2.3 2.1
+gchfeat 2.32.1
 
 ** NO OUTPUT **
 ```
@@ -198,7 +198,7 @@ No feature has been implemented in this version.
 Show me the fixes of the version 2.32.1:
 
 ```
-gchfix 2.32 .1
+gchfix 2.32.1
 
 * context-menu: Fix disabled instance open associate responder (0a09a7c8)
 ```
