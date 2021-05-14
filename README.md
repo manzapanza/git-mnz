@@ -40,8 +40,8 @@ If you'd like to upgrade the plugin automatically during Oh My Zsh updates you j
 | gpf?                 | gf && glol HEAD..$(git rev-parse --abbrev-ref $(current_branch)@{upstream}) | Shows remotes commits not in the same local branch (can I push with --force?)|
 | gtd                  | git tag --delete ${1}                                                       | Delete local tag                                                            |
 | gtD                  | git push --delete origin ${1}                                               | Delete remote tag                                                           |
-| gsfm                 | git reset --soft $(git merge-base --fork-point master) && gc                | Squash commits feature branched from master                                 |
-| gsfd                 | git reset --soft $(git merge-base --fork-point develop) && gc               | Squash commits feature branched from develop                                |
+| gsfm                 | grb HEAD && grh --soft $(git merge-base --fork-point master) && gc          | Squash commits feature until bifurcation with master                        |
+| gsfd                 | grb HEAD && grh --soft $(git merge-base --fork-point develop) && gc         | Squash commits feature until bifurcation with develop                       |
 
 ## Functions
 
@@ -243,21 +243,21 @@ FIXES:
 
 Squash all commits of the current/feature branch starting from the first commit after branch creation from master.
 
-For example the `feature/feature-a` was created from `aefdf5e` on `master` and has 3 new commits:
+For example the `feature/feature-a` was created from `ac04a96` on `develop`:
 
 ```
 glol
 
 * 1bd09b4 - (HEAD -> feature/feature-a) feat(a): clean code (2 minutes ago) <Author1>
 * d1383d6 - feat(a): Apply new feature on other components (3 minutes ago) <Author1>
-* ac04a96 - feat(a): Start feature a (4 minutes ago) <Author1>
+* ac04a96 - (develop) feat(a): Start feature a (4 minutes ago) <Author1>
 * aefdf5e - (origin/master, master) fix(chain-text): Select country by current language (5 days ago) <Author1>
-* 1edfe5c - fix(app): Fix font size and color (5 days ago) <Author1>
+* 1edfe5c - (canary) fix(app): Fix font size and color (5 days ago) <Author1>
 * 7c6ecc4 - fix(authentication): logout after request 401 (13 days ago) <Author1>
 ...
 ```
 
-With `gsfm` you can squash these 3 new commits in a new commit with `gc`:
+With `gsfm` squash commits between `HEAD` and `master` in a new commit with `gc`:
 
 ```
 gsfm
@@ -272,8 +272,8 @@ gsfm
 glol
 
 * 30284ca - (HEAD -> feature/feature-a) feat(a): Squashed feature A (3 seconds ago) <Author1>
-* aefdf5e - (origin/master, origin/HEAD, master) fix(chain-text): Select country by current language (5 days ago) <Author1>
-* 1edfe5c - fix(app): Fix font size and color (5 days ago) <Author1>
+* aefdf5e - (origin/master, master) fix(chain-text): Select country by current language (5 days ago) <Author1>
+* 1edfe5c - (canary) fix(app): Fix font size and color (5 days ago) <Author1>
 * 7c6ecc4 - fix(authentication): logout after request 401 (13 days ago) <Author1>
 ```
 
