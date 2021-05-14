@@ -61,6 +61,7 @@ If you'd like to upgrade the plugin automatically during Oh My Zsh updates you j
 | gchdocs              | Shows formatted log next or specific tag only docs                                                                                                        |
 | gchtest              | Shows formatted log next or specific tag only test                                                                                                        |
 | gch                  | Shows changelog next or specific tag                                                                                                                      |
+| gsf                  | Squash commits feature until bifurcation with first branch                                                                                                |
 
 ## How to use
 
@@ -318,3 +319,16 @@ glol
 * 7c6ecc4 - fix(authentication): logout after request 401 (13 days ago) <Author1>
 ```
 
+With `gsf` squash commits between `HEAD` and the first branch found `develop` in a new commit with `gc`:
+
+```
+gsf -m "feat(a): Squashed feature A"
+
+glol
+
+* 30284ca - (HEAD -> feature/feature-a) feat(a): Squashed feature A (3 seconds ago) <Author1>
+* ac04a96 - (develop) feat(a): Start feature a (4 minutes ago) <Author1>
+* aefdf5e - (origin/master, master) fix(chain-text): Select country by current language (5 days ago) <Author1>
+* 1edfe5c - (canary) fix(app): Fix font size and color (5 days ago) <Author1>
+* 7c6ecc4 - fix(authentication): logout after request 401 (13 days ago) <Author1>
+```

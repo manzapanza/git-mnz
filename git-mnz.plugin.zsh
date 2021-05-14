@@ -215,3 +215,25 @@ alias gch='_gch'
 
 alias gsfm='grb HEAD && grh --soft $(git merge-base --fork-point master) && gc'
 alias gsfd='grb HEAD && grh --soft $(git merge-base --fork-point develop) && gc'
+
+alias gsfc='grb HEAD && grh --soft $(git merge-base --fork-point canary) && gc'
+
+function _gsf() {
+  min="0"
+  branch=""
+  for b in $(gb); do
+    if [ "$b" != "*" ] && [ "$b" != "$(current_branch)" ]; then
+      dist="$(echo $(glol $(git merge-base --fork-point $b)..HEAD | wc -l))"
+      if (( $dist > 0 )) && (( $min == 0 || $dist < $min )) then
+        min="$dist"
+        branch="$b"
+      fi
+    fi
+  done
+
+  if [ "$branch" != "" ]; then
+    grh --soft "$(git merge-base --fork-point $branch)" && gc
+  fi
+}
+
+alias gsf='_gsf'
