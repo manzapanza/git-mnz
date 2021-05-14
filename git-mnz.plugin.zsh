@@ -1,5 +1,5 @@
 #!zsh
-local version='1.6.0'
+local version='1.6.1'
 local GIT_MNZ=$ZSH_CUSTOM/plugins/git-mnz
 
 alias gmnzv='echo "git-mnz v.${version}"'
@@ -232,7 +232,7 @@ function _gsf() {
   done
 
   if [ "$branch" != "" ]; then
-    grh --soft "$(git merge-base --fork-point $branch)" && gc
+    grb HEAD && grh --soft "$(git merge-base --fork-point $branch)" && gc
   fi
 }
 
