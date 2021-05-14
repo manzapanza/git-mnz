@@ -42,6 +42,7 @@ If you'd like to upgrade the plugin automatically during Oh My Zsh updates you j
 | gtD                  | git push --delete origin ${1}                                               | Delete remote tag                                                           |
 | gsfm                 | grb HEAD && grh --soft $(git merge-base --fork-point master) && gc          | Squash commits feature until bifurcation with master                        |
 | gsfd                 | grb HEAD && grh --soft $(git merge-base --fork-point develop) && gc         | Squash commits feature until bifurcation with develop                       |
+| gsfc                 | grb HEAD && grh --soft $(git merge-base --fork-point canary) && gc          | Squash commits feature until bifurcation with canary                        |
 
 ## Functions
 
@@ -285,10 +286,35 @@ gsfm -m "feat(a): Squashed feature A"
 glol
 
 * 30284ca - (HEAD -> feature/feature-a) feat(a): Squashed feature A (3 seconds ago) <Author1>
-* aefdf5e - (origin/master, origin/HEAD, master) fix(chain-text): Select country by current language (5 days ago) <Author1>
-* 1edfe5c - fix(app): Fix font size and color (5 days ago) <Author1>
+* aefdf5e - (origin/master, master) fix(chain-text): Select country by current language (5 days ago) <Author1>
+* 1edfe5c - (canary) fix(app): Fix font size and color (5 days ago) <Author1>
 * 7c6ecc4 - fix(authentication): logout after request 401 (13 days ago) <Author1>
 ...
 ```
 
+With `gsfd` squash commits between `HEAD` and `develop` in a new commit with `gc`:
+
+```
+gsfd -m "feat(a): Squashed feature A"
+
+glol
+
+* 30284ca - (HEAD -> feature/feature-a) feat(a): Squashed feature A (3 seconds ago) <Author1>
+* ac04a96 - (develop) feat(a): Start feature a (4 minutes ago) <Author1>
+* aefdf5e - (origin/master, master) fix(chain-text): Select country by current language (5 days ago) <Author1>
+* 1edfe5c - (canary) fix(app): Fix font size and color (5 days ago) <Author1>
+* 7c6ecc4 - fix(authentication): logout after request 401 (13 days ago) <Author1>
+```
+
+With `gsfc` squash commits between `HEAD` and `canary` in a new commit with `gc`:
+
+```
+gsfc -m "feat(a): Squashed feature A"
+
+glol
+
+* 30284ca - (HEAD -> feature/feature-a) feat(a): Squashed feature A (3 seconds ago) <Author1>
+* 1edfe5c - (canary) fix(app): Fix font size and color (5 days ago) <Author1>
+* 7c6ecc4 - fix(authentication): logout after request 401 (13 days ago) <Author1>
+```
 

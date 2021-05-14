@@ -1,5 +1,5 @@
 #!zsh
-local version='1.5.1'
+local version='1.6.0'
 local GIT_MNZ=$ZSH_CUSTOM/plugins/git-mnz
 
 alias gmnzv='echo "git-mnz v.${version}"'
