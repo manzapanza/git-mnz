@@ -24,25 +24,27 @@ If you'd like to upgrade the plugin automatically during Oh My Zsh updates you j
 
 ## Aliases
 
-| Alias                | Command                                                                     | Description                                                                 |
-|:---------------------|:----------------------------------------------------------------------------|-----------------------------------------------------------------------------|
-| gmnzv                |                                                                             | Get git-mnz version                                                         |
-| gmnzu                |                                                                             | Update git-mnz                                                              |
-| gcfix                | git commit -v --fixup                                                       | Commit with fixup                                                           |
-| grbia                | git rebase -i --autosquash                                                  | Interactive rebase with autosquash (fixup)                                  |
-| grbiaa               | git rebase -i --autosquash --autostash                                      | Interactive rebase with autosquash and autostash (fixup)                    |
-| grbma                | git rebase master --autostash                                               | Rebase master with autostash                                                |
-| grbca                | git rebase canary --autostash                                               | Rebase canary with autostash                                                |
-| grbda                | git rebase develop --autostash                                              | Rebase develop with autostash                                               |
-| gpt                  | git push && git push --tags                                                 | Push branch and tags                                                        |
-| gcca                 | git checkout canary                                                         | Checkout canary                                                             |
-| gai                  | git add -i                                                                  | Interactive add                                                             |
-| gpf?                 | gf && glol HEAD..$(git rev-parse --abbrev-ref $(current_branch)@{upstream}) | Shows remotes commits not in the same local branch (can I push with --force?)|
-| gtd                  | git tag --delete ${1}                                                       | Delete local tag                                                            |
-| gtD                  | git push --delete origin ${1}                                               | Delete remote tag                                                           |
-| gsfm                 | grb HEAD && grh --soft $(git merge-base --fork-point master) && gc          | Squash commits feature until bifurcation with master                        |
-| gsfd                 | grb HEAD && grh --soft $(git merge-base --fork-point develop) && gc         | Squash commits feature until bifurcation with develop                       |
-| gsfc                 | grb HEAD && grh --soft $(git merge-base --fork-point canary) && gc          | Squash commits feature until bifurcation with canary                        |
+| Alias                | Command                                                                                                      | Description                                                                 |
+|:---------------------|:-------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
+| gmnzv                |                                                                                                              | Get git-mnz version                                                         |
+| gmnzu                |                                                                                                              | Update git-mnz                                                              |
+| gcfix                | git commit -v --fixup                                                                                        | Commit with fixup                                                           |
+| grbia                | git rebase -i --autosquash                                                                                   | Interactive rebase with autosquash (fixup)                                  |
+| grbiaa               | git rebase -i --autosquash --autostash                                                                       | Interactive rebase with autosquash and autostash (fixup)                    |
+| grbma                | git rebase master --autostash                                                                                | Rebase master with autostash                                                |
+| grbca                | git rebase canary --autostash                                                                                | Rebase canary with autostash                                                |
+| grbda                | git rebase develop --autostash                                                                               | Rebase develop with autostash                                               |
+| gpt                  | git push && git push --tags                                                                                  | Push branch and tags                                                        |
+| gcca                 | git checkout canary                                                                                          | Checkout canary                                                             |
+| gai                  | git add -i                                                                                                   | Interactive add                                                             |
+| gpf?                 | gf && glol HEAD..$(git rev-parse --abbrev-ref $(current_branch)@{upstream})                                  | Shows remotes commits not in the same local branch (can I push with --force?)|
+| gtd                  | git tag --delete ${1}                                                                                        | Delete local tag                                                            |
+| gtD                  | git push --delete origin ${1}                                                                                | Delete remote tag                                                           |
+| gsfm                 | grb HEAD && grh --soft $(git merge-base --fork-point master) && gc                                           | Squash commits feature until bifurcation with master                        |
+| gsfd                 | grb HEAD && grh --soft $(git merge-base --fork-point develop) && gc                                          | Squash commits feature until bifurcation with develop                       |
+| gsfc                 | grb HEAD && grh --soft $(git merge-base --fork-point canary) && gc                                           | Squash commits feature until bifurcation with canary                        |
+| grlol                | git reflog --pretty='%Cred%h%Creset -%C(auto)%d%Creset %gs %Cgreen(%cr) %C(bold blue)<%an>%Creset'           | Format reflog output like glol                                              |
+| grlod                | git reflog --pretty='%Cred%h%Creset -%C(auto)%d%Creset %gs %Cgreen(%ad) %C(bold blue)<%an>%Creset'           | Format reflog output like glod                                              | 
 
 ## Functions
 

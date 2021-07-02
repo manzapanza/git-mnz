@@ -1,5 +1,5 @@
 #!zsh
-local version='1.6.1'
+local version='1.7.0'
 local GIT_MNZ=$ZSH_CUSTOM/plugins/git-mnz
 
 alias gmnzv='echo "git-mnz v.${version}"'
@@ -237,3 +237,6 @@ function _gsf() {
 }
 
 alias gsf='_gsf'
+
+alias grlol='git reflog --pretty='\''%Cred%h%Creset -%C(auto)%d%Creset %gs %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'
+alias grlod='git reflog --pretty='\''%Cred%h%Creset -%C(auto)%d%Creset %gs %Cgreen(%ad) %C(bold blue)<%an>%Creset'\'
