@@ -1,5 +1,5 @@
 #!zsh
-local version='1.7.0'
+local version='1.8.0'
 local GIT_MNZ=$ZSH_CUSTOM/plugins/git-mnz
 
 alias gmnzv='echo "git-mnz v.${version}"'
@@ -66,7 +66,7 @@ function _gchl() {
     tag2="HEAD"
   fi
 
-  git log --graph --pretty='%s (%Cred%h%Creset)' $(git describe --tags --abbrev=0 "$tag2").."$tag1" $2
+  git log --graph --pretty='%s (%Cred%h%Creset)' $(git describe --tags --abbrev=0 "$tag2" 2>/dev/null || TAIL).."$tag1" $2 $3 $4
 }
 
 regexReplace='s/^\* (feat|refactor|chore|fix|style|perf|docs|test):? ?(\((.+)\)(:))?(.+)/* \3\4\5/'
@@ -148,7 +148,17 @@ function _gchtest(){
     tag1="HEAD"
   fi
 
-  _gchl "$tag1"  --grep="^test" | sed -E "$regexReplace"
+  _gchl "$tag1" --grep="^test" | sed -E "$regexReplace"
+}
+
+function _gchother() {
+  local tag1="$1"
+
+  if [ -z "${tag1}" ]; then
+    tag1="HEAD"
+  fi
+
+  _gchl "$tag1" --invert-grep -E --grep="^(feat|refactor|chore|fix|style|perf|docs|test)" | sed -E "$regexReplace"
 }
 
 function _gch() {
@@ -160,6 +170,7 @@ function _gch() {
   local perf=`gchperf $1`
   local docs=`gchdocs $1`
   local test=`gchtest $1`
+  local other=`gchother $1`
 
   if [ -n "${feat}" ]; then
     printf "\nFEATURES:\n\n"
@@ -200,8 +211,14 @@ function _gch() {
     printf "\nTESTS:\n\n"
     echo "$test"
   fi;
+
+  if [ -n "${other}" ]; then
+    printf "\nOTHER:\n\n"
+    echo "$other"
+  fi;
 }
 
+alias TAIL='git rev-list HEAD | tail -n 1'
 alias gchl='_gchl'
 alias gchfeat='_gchfeat'
 alias gchrefactor='_gchrefactor'
@@ -211,6 +228,7 @@ alias gchstyle='_gchstyle'
 alias gchperf='_gchperf'
 alias gchdocs='_gchdocs'
 alias gchtest='_gchtest'
+alias gchother='_gchother'
 alias gch='_gch'
 
 alias gsfm='grb HEAD && grh --soft $(git merge-base --fork-point master) && gc'
