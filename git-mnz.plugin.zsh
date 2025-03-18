@@ -1,5 +1,5 @@
 #!zsh
-local version='1.8.0'
+local version='1.9.0'
 local GIT_MNZ=$ZSH_CUSTOM/plugins/git-mnz
 
 alias gmnzv='echo "git-mnz v.${version}"'
@@ -38,6 +38,8 @@ alias gcfixaa='_gcfixaa'
 alias gpt='git push && git push --tags'
 
 alias gcca='git checkout canary'
+
+alias gcst='git checkout stage'
 
 alias gai='git add -i'
 
