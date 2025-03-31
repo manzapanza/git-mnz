@@ -1,5 +1,5 @@
 #!zsh
-local version='1.9.0'
+local version='1.10.0'
 local GIT_MNZ=$ZSH_CUSTOM/plugins/git-mnz
 
 alias gmnzv='echo "git-mnz v.${version}"'
@@ -54,6 +54,22 @@ function _gtdD() {
 }
 
 alias gtdD='_gtdD'
+
+function _gtvg() {
+  gtv | grep "$1"
+}
+
+function _gtvgl() {
+  local n="$2"
+
+  if [ -z "${n}" ]; then
+    n="1"
+  fi
+  _gtvg "$1" | tail -"$n"
+}
+
+alias gtvg='_gtvg'
+alias gtvgl='_gtvgl'
 
 function _gchl() {
   local tag1="$1"

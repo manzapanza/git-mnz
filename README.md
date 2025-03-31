@@ -41,6 +41,8 @@ If you'd like to upgrade the plugin automatically during Oh My Zsh updates you j
 | gpf?                 | gf && glol HEAD..$(git rev-parse --abbrev-ref $(current_branch)@{upstream})                                  | Shows remotes commits not in the same local branch (can I push with --force?)|
 | gtd                  | git tag --delete ${1}                                                                                        | Delete local tag                                                            |
 | gtD                  | git push --delete origin ${1}                                                                                | Delete remote tag                                                           |
+| gtvg                 | git tag | sort -V | grep ${1}                                                                                | Grep sorted tags                                                            |
+| gtvgl                | git tag | sort -V | grep ${1} | tail -${2}                                                                   | Grep sorted tags last n                                                     |
 | gsfm                 | grb HEAD && grh --soft $(git merge-base --fork-point master) && gc                                           | Squash commits feature until bifurcation with master                        |
 | gsfd                 | grb HEAD && grh --soft $(git merge-base --fork-point develop) && gc                                          | Squash commits feature until bifurcation with develop                       |
 | gsfc                 | grb HEAD && grh --soft $(git merge-base --fork-point canary) && gc                                           | Squash commits feature until bifurcation with canary                        |
@@ -119,6 +121,42 @@ Delete local and remote tag
 
 ```
 gtdD 2.1.0
+```
+
+### Grep sorted tags
+
+Grep sorted tags
+
+```
+gtvg web
+
+web/1.0.0
+web/1.1.0
+web/1.1.1
+web/1.2.0
+web/1.2.1
+web/2.0.1
+web/2.0.2
+web/2.0.3
+web/2.0.4
+web/2.1.0
+```
+
+Grep sorted tags last one
+
+```
+gtvgl web
+
+web/2.1.0
+```
+Grep sorted tags last n
+
+```
+gtvgl web 3
+
+web/2.0.3
+web/2.0.4
+web/2.1.0
 ```
 
 ### Gch & Co (Changelog)
