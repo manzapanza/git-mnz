@@ -41,14 +41,15 @@ If you'd like to upgrade the plugin automatically during Oh My Zsh updates you j
 | gpf?                 | gf && glol HEAD..$(git rev-parse --abbrev-ref $(current_branch)@{upstream})                                  | Shows remotes commits not in the same local branch (can I push with --force?)|
 | gtd                  | git tag --delete ${1}                                                                                        | Delete local tag                                                            |
 | gtD                  | git push --delete origin ${1}                                                                                | Delete remote tag                                                           |
-| gtvg                 | git tag \| sort -V \| grep ${1}                                                                                | Grep sorted tags                                                            |
-| gtvgl                | git tag \| sort -V \| grep ${1} \| tail -${2}                                                                   | Grep sorted tags last n                                                     |
+| gtvg                 | git tag \| sort -V \| grep ${1}                                                                              | Grep sorted tags                                                            |
+| gtvgl                | git tag \| sort -V \| grep ${1} \| tail -${2}                                                                | Grep sorted tags last n                                                     |
+| gtcr                 | git tag --contains "${1}" \| sort -V \| grep -v - \| head -1                                                 | Get released tag by commit hash                                             |
 | gsfm                 | grb HEAD && grh --soft $(git merge-base --fork-point master) && gc                                           | Squash commits feature until bifurcation with master                        |
 | gsfd                 | grb HEAD && grh --soft $(git merge-base --fork-point develop) && gc                                          | Squash commits feature until bifurcation with develop                       |
 | gsfc                 | grb HEAD && grh --soft $(git merge-base --fork-point canary) && gc                                           | Squash commits feature until bifurcation with canary                        |
 | grlol                | git reflog --pretty='%Cred%h%Creset -%C(auto)%d%Creset %gs %Cgreen(%cr) %C(bold blue)<%an>%Creset'           | Format reflog output like glol                                              |
 | grlod                | git reflog --pretty='%Cred%h%Creset -%C(auto)%d%Creset %gs %Cgreen(%ad) %C(bold blue)<%an>%Creset'           | Format reflog output like glod                                              |
-| TAIL                 | git rev-list HEAD \| tail -n 1                                                                                | Returns the last commit hash                                               |
+| TAIL                 | git rev-list HEAD \| tail -n 1                                                                               | Returns the last commit hash                                                |
 
 ## Functions
 
@@ -159,6 +160,33 @@ web/2.0.4
 web/2.1.0
 ```
 
+### Get released tag by commit hash
+
+Get the release tag (X.Y.Z) of a specific commit hash excluding any pre-release tags (X.Y.Z-*). 
+
+Example log:
+
+```
+glods 
+
+* 1eabcba6 - (HEAD -> canary, tag: v3.5.0) chore(app): update submodules (2020-07-21) <Author1>
+* c63f6de0 - refactor(chat): Route names as constants, Chat connect resolve (2020-07-20) <Author2>
+* 34b72de0 - (tag: v3.4.0) feat(app): Add chat button on card and list-item (2020-07-20) <Author1>
+* 05f27a92 - (tag: v3.4.0-rc.2) chore(app): update submodules (2020-07-20) <Author1>
+* 68a5df9b - (tag: v3.4.0-rc.3) feat(panels): Show chats on panels (2020-07-13) <Author1>
+* c5e41612 - fix(context-menu): change key for chat (2020-07-13) <Author1>
+* 3cce3918 - fix(app): chat elements on main view (2020-07-13) <Author1>
+
+gtcr c5e41612
+v3.4.0
+
+gtcr 68a5df9b
+v3.4.0
+
+gtcr c63f6de0
+v3.5.0
+```
+
 ### Gch & Co (Changelog)
 
 Show the log of the next or specific tag.
@@ -252,7 +280,7 @@ gchfix 2.32.1
 * context-menu: Fix disabled instance open associate responder (0a09a7c8)
 ```
 
-The others commands `gchchore`,  `gchfix`, `g lchstyle`,  `gchperf`, `gchdocs`, `gchtest`, `gchother` have the same behavior.
+The others commands `gchchore`,  `gchfix`, `gchstyle`,  `gchperf`, `gchdocs`, `gchtest`, `gchother` have the same behavior.
 
 Show me the full changelog of the next version:
 
