@@ -1,12 +1,12 @@
 #!zsh
-local version='1.11.1'
-local GIT_MNZ=$ZSH_CUSTOM/plugins/git-mnz
+GIT_MNZ_VERSION='1.11.2'
+GIT_MNZ_PATH=$ZSH_CUSTOM/plugins/git-mnz
 
-alias gmnzv='echo "git-mnz v.${version}"'
+alias gmnzv='echo "git-mnz v.${GIT_MNZ_VERSION}"'
 
 function _gmnzu() {
-  git -C $GIT_MNZ fetch --all
-  git -C $GIT_MNZ reset origin/master --hard
+  git -C $GIT_MNZ_PATH fetch --all
+  git -C $GIT_MNZ_PATH reset origin/master --hard
   source ~/.zshrc
   gmnzv
 }
