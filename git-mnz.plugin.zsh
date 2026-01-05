@@ -1,5 +1,5 @@
 #!zsh
-local version='1.11.0'
+local version='1.11.1'
 local GIT_MNZ=$ZSH_CUSTOM/plugins/git-mnz
 
 alias gmnzv='echo "git-mnz v.${version}"'
@@ -43,7 +43,7 @@ alias gcst='git checkout stage'
 
 alias gai='git add -i'
 
-alias gpf\?='gf && glol HEAD..$(git rev-parse --abbrev-ref $(current_branch)@{upstream})'
+alias gpf\?='gf && glol HEAD..$(git rev-parse --abbrev-ref $(git_current_branch)@{upstream})'
 
 alias gtd='git tag --delete ${1}'
 alias gtD='git push --delete origin ${1}'
@@ -263,7 +263,7 @@ function _gsf() {
   min="0"
   branch=""
   for b in $(gb); do
-    if [ "$b" != "*" ] && [ "$b" != "$(current_branch)" ]; then
+    if [ "$b" != "*" ] && [ "$b" != "$(git_current_branch)" ]; then
       dist="$(echo $(glol $(git merge-base --fork-point $b)..HEAD | wc -l))"
       if (( $dist > 0 )) && (( $min == 0 || $dist < $min )) then
         min="$dist"
